@@ -26,6 +26,11 @@ public class ProductServiceImpl implements ProductService {
     @Override
     @Cacheable("products")
     public List<Product> findAllProduct() {
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         System.out.println("findAllProduct");
         return productRepository.findAll();
     }
